@@ -26,6 +26,30 @@
 = Experience
 
 #resume-entry(
+  title: "Staff Engineer. Kneron Inc",
+  location: "Taipei, Taiwan",
+  date: "2025/5 - 2025/9",
+)
+
+#resume-item[
+  + *RISC-V NPU Kernel Function Development*
+    - Focused on General Activation (GA) Engine hardware acceleration for neural network compiler
+  + *GA Engine Kernel Implementation*
+    #set enum(numbering: "a)")
+    + Delivered production-ready GA instructions: kvgexp, kvglog2, kvgpow2, kvgrecip, kvgsigmoid, kvgtanh
+    + Designed Zone-Based Dynamic Tolerance Framework for precision control across critical input ranges
+    + Achieved f16/bf16 support with 162/162 tests passed, 32 elem/cycle throughput (10x vs. vector processor)
+  + *Critical Root Cause Analysis*
+    #set enum(numbering: "a)")
+    + Investigated large discrepancies between GA instruction results and csim/FPGA simulations
+    + Identified root cause: golden sample precision conversion error in test framework causing false failures
+  + *Test Framework Modernization*
+    #set enum(numbering: "a)")
+    + Introduced pytest + parametrize + xdist for parallel test execution
+    + Significantly reduced test time and eliminated code duplication
+]
+
+#resume-entry(
   title: "Power-Tech Team Lead. Ubiquiti, Inc",
   location: "Room B, 11 F., No. 89, Songren Rd., Xinyi",
   date: "2023/1 - 2025/2",
@@ -83,10 +107,13 @@
 )
 
 #resume-item[
-  + *LTE QoS Required by HK MTR*
-    - *Designed and implemented #link("https://github.com/yingchuan/bc-qos")[Bandwidth-Conscious QoS]*
-      #set enum(numbering: "a)")  
-      + Maximize available LTE bandwidth to ensure QoS operates efficiently on the edge computing gateway, while maintaining fair and stable TCP flows
+  + *LTE QoS for HK MTR Edge Computing Gateway*
+    - *Designed and implemented #link("https://github.com/yingchuan/bc-qos")[Bandwidth-Conscious QoS]* to solve bufferbloat on dynamic LTE networks
+      #set enum(numbering: "a)")
+      + Built adaptive traffic control using Linux TC: HTB hierarchical queuing + cBPF classification + fq_codel AQM
+      + Invented passive bandwidth detection via tunnel keepalive messages, avoiding link saturation from active probing
+      + Implemented AIMD-based "Pinch" strategy: dynamically adjust HTB ceiling to shift bottleneck from ISP to local gateway, enabling fq_codel to manage queue latency
+      + Achieved stable TCP sawtooth patterns with fair bandwidth sharing across 4 priority classes (Management, IoT, Staff, Guest)
 ]
 
 #resume-entry(
